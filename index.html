@@ -7,88 +7,82 @@
 			crossorigin="" />
 		<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
             crossorigin=""></script>	
-		   
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<title>Location de vélo</title>
+		<title>Location de vélo</title>   
+		
 		
 		
 	</head>	
 	<body>
 		<div class="logo" ><img src="image2/logo-contract.png" alt="logo" /></div>
 		
-		 <div  id="slides">
-			<div class="active" id="slide1"><img  src="image2/velo3.jpg" alt="velo3" />
-			<p class="commentaire">Choisissez votre station</p></div>
-			
-					<div class="slide" id="slide1"><img  src="image2/velo2.jpg" alt="velo3" />
-					<p class="commentaire">Remplissez les champs pour indiquer votre nom</p></div>
-				
-							<div class="slide" id="slide1"><img  src="image2/velo4.jpg" alt="velo3" />
-							<p class="commentaire">Puis il vous faut signer</p></div>
-							
-									<div class="slide" id="slide1"><img  src="image2/velo5.jpg" alt="velo3" />
-									<p class="commentaire">Il vous reste 20 min pour aller chercher votre vélo</p></div>
-				<!-- <img class="slide" id="slide1" src="image2/velo3.jpg" alt="velo3" />
-				<img class="slide" id="slide1" src="image2/velo2.jpg" alt="velo2"/>
-				<img class="slide" id="slide1" src="image2/velo4.jpg" alt="velo4"/>
-				<img class="slide" id="slide1" src="image2/velo5.jpg" alt="velo5"/>
-		 -->
-		        <div id="droite"><i  class="fas fa-chevron-circle-right"></i></div>
-		       <div id="gauche"> <i class="fas fa-chevron-circle-left"></i></div>
-		      <div id="arret"> <i class="fas fa-play-circle"></i></div>
-		  </div>
-		 
+		<div  id="slides">
+			<div class="slide" ><img  src="image2/velo3.jpg" alt="velo3" />
+			    <p class="commentaire">Choisissez votre station</p>
+			</div>
+			<div class="slide"><img  src="image2/velo2.jpg" alt="velo3" />
+				<p class="commentaire">Remplissez les champs pour indiquer votre nom</p>
+			</div>	
+			<div class="slide"><img  src="image2/velo4.jpg" alt="velo3" />
+				<p class="commentaire">Puis il vous faut signer</p>
+			</div>				
+			<div class="slide"><img  src="image2/velo5.jpg" alt="velo3" />
+				<p class="commentaire">Il vous reste 20 min pour aller chercher votre vélo</p>
+			</div>	
 
-		  <div class="carre"><div id="map"></div>
+		    <div id="droite"><i  class="fas fa-chevron-circle-right"></i></div>
+		    <div id="gauche"> <i class="fas fa-chevron-circle-left"></i></div>
+		    <div id="arret"> <i class="fas fa-play-circle"></i></div>
+		</div> 
 
-		  
-
-		  <div id='details'>
-				<div id='nomStation'>
-			Nom de la station:<br> <input type='text'><br>
-			Adresse:<br> <input class="adress" type='text'><br>
-			Nbre de vélo :<br> <input type='text'><br>
-			Nbre de vélo restant : <br> <input type='text'><br>
-	
-			Nom : <br> <input class="nom" id="nom" type='text'><br>	
-		  <br>
-			Prénom: <br> <input class="nom" id="prenom" type='text'><br>	
-			<br>
-			<div id="resa">Réserver</div>
-			<span id="attention"></span>
-		</div>
-			<br>
-			<div id="signature"><p>Veuillez signer ici</p><canvas id="canvas"></canvas>
-			<button  id="enregistrer">enregistrer</button>
-			<button id="effacer">Effacer</button></div>
-			<br>
-			
-			<br>
-			
-				  </div>
-		  
-		  <div id='result'></div>
-		 
-		  </div>
-		  <div id="changerStation">Changer de station</div>
-		  <div id="encart">
+		  <div class="carre">
+			   <div id="map"></div>
+		       <div id='details'>
+			    	<div id='nomStation'>
+		            	Nom de la station:<br> <input type='text'><br>
+			            Adresse:<br> <input class="adress" type='text'><br>
+			            Nbre de vélo :<br> <input type='text'><br>
+			            Nbre de vélo restant : <br> <input type='text'><br>	
+			            Nom : <br> <input class="nom" id="nom" type='text'><br> <br>			 
+			            Prénom: <br> <input class="nom" id="prenom" type='text'><br><br>			            
+			            <div id="resa">Réserver</div>
+						<span id="attention"></span>
+						
+		            </div><br>			
+			        <div id="signature"><p>Veuillez signer ici</p><canvas id="canvas"></canvas>
+			            <button  id="enregistrer">enregistrer</button>
+			            <button id="effacer">Effacer</button>
+			        </div><br><br>
+			   </div>
+			   <div id='result'></div>
+		 </div>
+				<div id="resaencours"></div> <br> 
+		 <div id="changerStation">Changer de station</div>
+		 <div id="encart">
 				<i class="fas fa-hourglass-half"></i>
-				<p id="reservation"></p></div>
+				<p id="reservation"></p>
+		</div>
+
+	    <script src="ajax.js">   </script>
+	    <script src="compteRebours2.js">  </script>
+	    <script src="signature3.js">  </script>
+        <script src="carte4.js">  </script>
+	    <script src="essai4.js"> </script>
+
+    </body>
+</html>
+	
+		 
+		 
+		  
 		
 	
 		        
-   <!-- <script src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>-->
-	<script src="ajax.js">   </script>
-	<script src="essai4.js"> </script>
-	<script src="compteRebours.js">  </script>
-	<script src="signature3.js">  </script>
-	<!--<script src="signer.js">  </script>-->
-	<script src="carte4.js">  </script>
-	<!--<script src="resa.js">  </script>-->
+   
+
 	
 
 	
 
-	</body>
-	</html>
+
 		

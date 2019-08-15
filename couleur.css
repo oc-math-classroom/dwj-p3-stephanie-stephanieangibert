@@ -202,6 +202,11 @@ input
   margin-left: 5%;
 
 }
+#resaencours
+	{
+		font-size: 150%;
+		color:green;
+	}
 /*-------------
 MEDIA QUERIES
 ---------------*/
@@ -227,4 +232,5 @@ MEDIA QUERIES
 	{
 		margin-left: 40%;
 	}
+	
 }

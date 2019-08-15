@@ -6,24 +6,28 @@ class Slider {
         this.images = document.querySelectorAll(".slide");
         console.log(this.images);
         this.images[this.index].className = "slide";
-        document.getElementById("arret").onclick = this.playpause.bind(this);
-        document.getElementById("droite").onclick = this.droite.bind(this);
+        document.getElementById("arret").addEventListener("click", this.playpause.bind(this));
+        document.getElementById("droite").addEventListener("click", this.droite.bind(this));
         document.getElementById("gauche").addEventListener("click", this.gauche.bind(this));
 
         //interaction au clavier
         document.addEventListener("keyup", this.controleClavier.bind(this));
-        
+
     }
 
     //methodes
 
+
     nextSlide() {
+        
         this.images[this.index].className = 'slide';
         this.index = (this.index + 1) % this.images.length;
         this.images[this.index].className = 'active';
+        console.log(1%4);
     }
 
     play() {
+        this.nextSlide();
         this.video = setInterval(this.nextSlide.bind(this), 5000);
 
     }
