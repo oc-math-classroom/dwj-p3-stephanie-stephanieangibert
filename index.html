@@ -2,6 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="couleur.css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
 			crossorigin="" />
@@ -28,7 +29,7 @@
 			</div>				
 			<div class="slide"><img  src="image2/velo5.jpg" alt="velo3" />
 				<p class="commentaire">Il vous reste 20 min pour aller chercher votre vélo</p>
-			</div>	
+			</div>
 
 		    <div id="droite"><i  class="fas fa-chevron-circle-right"></i></div>
 		    <div id="gauche"> <i class="fas fa-chevron-circle-left"></i></div>
@@ -46,16 +47,17 @@
 			            Nom : <br> <input class="nom" id="nom" type='text'><br> <br>			 
 			            Prénom: <br> <input class="nom" id="prenom" type='text'><br><br>			            
 			            <div id="resa">Réserver</div>
-						<span id="attention"></span>
-						
-		            </div><br>			
+						<span id="attention"></span>						
+					</div><br>	
+							
 			        <div id="signature"><p>Veuillez signer ici</p><canvas id="canvas"></canvas>
 			            <button  id="enregistrer">enregistrer</button>
 			            <button id="effacer">Effacer</button>
 			        </div><br><br>
-			   </div>
+			   </div>			   
 			   <div id='result'></div>
 		 </div>
+
 				<div id="resaencours"></div> <br> 
 		 <div id="changerStation">Changer de station</div>
 		 <div id="encart">

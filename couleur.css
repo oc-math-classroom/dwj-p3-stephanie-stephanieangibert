@@ -222,15 +222,51 @@ MEDIA QUERIES
 	}
 	#nomStation
 	{
-		margin-top: 5%;
+		margin-top: 10%;
+		
 	}
 	#details
 	{
 		height: 400px;
+		width: 450px;
+		margin-top: 50%;
+		margin-left: 40%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
+	#signature{
+	
+		margin-top: 5%;
+		position: relative;
+	}
+	#effacer{
+		position: absolute;
+		top:90%;
+		left:50%;
+	}
+	#enregistrer{
+		position: absolute;
+		top:90%;
+		left:0%;
+	}
+	
+	#encart{
+		position: absolute;
+		top:145%;
+		padding-left: 10%;
+	}
+		
 	#changerStation
 	{
+		position: absolute;
+		top:142%;
 		margin-left: 40%;
+				
+	}
+	#resaencours
+	{
+		padding-left: 10%;
 	}
 	
 }

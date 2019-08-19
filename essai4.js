@@ -19,11 +19,11 @@ class Slider {
 
 
     nextSlide() {
-        
+
         this.images[this.index].className = 'slide';
         this.index = (this.index + 1) % this.images.length;
         this.images[this.index].className = 'active';
-        console.log(1%4);
+        console.log(1 % 4);
     }
 
     play() {

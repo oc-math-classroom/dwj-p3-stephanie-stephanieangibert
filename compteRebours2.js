@@ -1,20 +1,21 @@
 class Timer {
   constructor(minCpt) {
-    this.minCpt = minCpt // infos sur le temps du timer
+    this.minCpt = minCpt // infos sur le temps du timer  
+    this.interval = null;
     this.min = (minCpt - 60) / 60;
     this.sec = 59;
     this.recupSec = sessionStorage.getItem("secondes");
     this.recupMin = sessionStorage.getItem("minutes");
     document.getElementById("signature").style.visibility = "hidden";
     document.getElementById("encart").style.visibility = "hidden";
-    document.getElementById("reservation").style.visibility="hidden";
-    this.changerStation = document.getElementById("changerStation");
+    document.getElementById("changerStation").addEventListener('click', this.stopTimer.bind(this));
     document.getElementById("enregistrer").addEventListener('click', this.startTimer.bind(this));
     window.addEventListener('load', this.startRefresh.bind(this));
   }
 
   display() {
-    const intervalId = setInterval(() => {
+
+    this.interval = setInterval(() => {
       document.getElementById("reservation").textContent = "Il vous reste " + sessionStorage.getItem("minutes") + " min " + sessionStorage.getItem("secondes") + " sec" + " pour aller à la station " + sessionStorage.getItem("adresse");
       if ((this.sec >= 0)) {
         this.sec--
@@ -32,37 +33,40 @@ class Timer {
         sessionStorage.setItem("temps", this.minCpt);
 
       } else {
-        clearInterval(intervalId);       
+        clearInterval(this.interval);
         document.getElementById("reservation").textContent = "Votre réservation à la station  " + sessionStorage.getItem("adresse") + " n'est plus effective";
         document.getElementById("resaencours").style.visibility = "hidden";
         sessionStorage.clear();
       }
-
-
     }, 1000);
   }
+
+  stopTimer() {
+    document.getElementById("encart").style.visibility = "hidden";
+    document.getElementById("resaencours").style.visibility = "hidden";
+    clearInterval(this.interval);
+    sessionStorage.clear();
+  }
+
   startTimer() {
 
     this.display();
     document.getElementById("encart").style.visibility = "visible";
-    document.getElementById("reservation").style.visibility="visible";
     document.getElementById("signature").style.visibility = "hidden";
     document.getElementById("enregistrer").style.visibility = "hidden";
-
   }
-  startRefresh() {
 
+  startRefresh() {
     this.refresh();
     document.getElementById("encart").style.visibility = "visible";
     document.getElementById("signature").style.visibility = "hidden";
     document.getElementById("enregistrer").style.visibility = "hidden";
-    document.getElementById("reservation").style.visibility="visible";
   }
 
 
   refresh() {
 
-    const intervalId = setInterval(() => {
+    this.interval = setInterval(() => {
         document.getElementById("reservation").textContent = "Il vous reste " + sessionStorage.getItem("minutes") + " min " + sessionStorage.getItem("secondes") + " sec" + " pour aller à la station " + sessionStorage.getItem("adresse");
 
         if ((this.recupSec >= 0)) {
@@ -80,21 +84,11 @@ class Timer {
 
 
         } else {
-          clearInterval(intervalId);
+          clearInterval(this.interval);
           document.getElementById("reservation").textContent = "Votre réservation à la station " + sessionStorage.getItem("adresse") + "n'est plus effective";
           document.getElementById("resaencours").style.visibility = "hidden";
           sessionStorage.clear();
-        } {
-          this.changerStation.addEventListener("click", () => {
-            sessionStorage.clear();
-            clearInterval(intervalId);
-            document.getElementById("encart").style.visibility = "hidden";
-            document.getElementById("resaencours").style.visibility = "hidden";
-
-          })
         }
-
-
       },
       1000);
   }
