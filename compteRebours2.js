@@ -1,8 +1,8 @@
 class Timer {
-  constructor(minCpt) {
-    this.minCpt = minCpt // infos sur le temps du timer  
+  constructor(tempsMinTimer) {
+    this.minCpt = tempsMinTimer;
     this.interval = null;
-    this.min = (minCpt - 60) / 60;
+    this.min = (tempsMinTimer - 60) / 60;
     this.sec = 59;
     this.recupSec = sessionStorage.getItem("secondes");
     this.recupMin = sessionStorage.getItem("minutes");
@@ -18,24 +18,26 @@ class Timer {
     this.interval = setInterval(() => {
       document.getElementById("reservation").textContent = "Il vous reste " + sessionStorage.getItem("minutes") + " min " + sessionStorage.getItem("secondes") + " sec" + " pour aller à la station " + sessionStorage.getItem("adresse");
       if ((this.sec >= 0)) {
-        this.sec--
+        this.sec--;
       }
 
       if (this.sec === 0) {
         this.sec = 59;
-        this.min--
+        this.min--;
       }
 
       if ((this.min >= 0) && (this.sec >= 0)) {
+        sessionStorage.removeItem("secondes");
+        sessionStorage.removeItem("minutes");
 
         sessionStorage.setItem("secondes", this.sec);
         sessionStorage.setItem("minutes", this.min);
-        sessionStorage.setItem("temps", this.minCpt);
+        sessionStorage.setItem("temps", this.tempsMinTimer);
 
       } else {
         clearInterval(this.interval);
         document.getElementById("reservation").textContent = "Votre réservation à la station  " + sessionStorage.getItem("adresse") + " n'est plus effective";
-        document.getElementById("resaencours").style.visibility = "hidden";
+        document.getElementById("resa_en_cours").style.visibility = "hidden";
         sessionStorage.clear();
       }
     }, 1000);
@@ -43,12 +45,17 @@ class Timer {
 
   stopTimer() {
     document.getElementById("encart").style.visibility = "hidden";
-    document.getElementById("resaencours").style.visibility = "hidden";
+    document.getElementById("resa_en_cours").style.visibility = "hidden";
     clearInterval(this.interval);
     sessionStorage.clear();
+
+
   }
 
   startTimer() {
+    sessionStorage.removeItem("secondes");
+
+    sessionStorage.removeItem("minutes");
 
     this.display();
     document.getElementById("encart").style.visibility = "visible";
@@ -70,15 +77,17 @@ class Timer {
         document.getElementById("reservation").textContent = "Il vous reste " + sessionStorage.getItem("minutes") + " min " + sessionStorage.getItem("secondes") + " sec" + " pour aller à la station " + sessionStorage.getItem("adresse");
 
         if ((this.recupSec >= 0)) {
-          this.recupSec--
+          this.recupSec--;
         }
 
         if (this.recupSec === 0) {
           this.recupSec = 59;
-          this.recupMin--
+          this.recupMin--;
         }
 
         if ((this.recupMin >= 0) && (this.recupSec >= 0)) {
+          sessionStorage.removeItem("secondes");
+          sessionStorage.removeItem("minutes");
           sessionStorage.setItem("secondes", this.recupSec);
           sessionStorage.setItem("minutes", this.recupMin);
 
@@ -86,7 +95,7 @@ class Timer {
         } else {
           clearInterval(this.interval);
           document.getElementById("reservation").textContent = "Votre réservation à la station " + sessionStorage.getItem("adresse") + "n'est plus effective";
-          document.getElementById("resaencours").style.visibility = "hidden";
+          document.getElementById("resa_en_cours").style.visibility = "hidden";
           sessionStorage.clear();
         }
       },
